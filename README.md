@@ -1,3 +1,9 @@
+# Project 1: Coursera Exploratory Data Analysis
+
+Half done.  2 down, 2 to go.
+
+# Assignment Description
+
 ## Introduction
 
 This assignment uses data from
