@@ -1,6 +1,6 @@
 # Project 1: Coursera Exploratory Data Analysis
 
-Half done.  2 down, 2 to go.
+Plot 4 is really really close, can't get the exact cex value just right.
 
 # Assignment Description
 
