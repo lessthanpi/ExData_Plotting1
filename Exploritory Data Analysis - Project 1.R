@@ -13,6 +13,10 @@
 
 url<-"https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
 
+##build a directory(if needed)
+#saw this in videos for another course
+if(!file.exists("./data2")){dir.create("./data2")}
+
 ##grab the file from url ##
 
 download.file(url,destfile="./data2/coursera.zip")
@@ -103,4 +107,46 @@ dev.off()
 
 #####################################################
 # End of Part III
+#####################################################
+
+#####################################################
+# Part IV:  Plot 3
+#####################################################
+s1<-table_dates$Sub_metering_1
+s2<-table_dates$Sub_metering_2
+s3<-table_dates$Sub_metering_3
+
+plot(days,s1,type="l",xaxt="none",xlab="",
+     yaxt="none",ylab="Energy Sub Metering",
+     col="black",ylim=c(0,40),lwd=2)
+lines(days,s2, col = "red")
+lines(days,s3, col = "blue")
+legend("topright", legend=c("Sub Metering 1","Sub Metering 2","Sub Metering 3"),
+        col=c("black","red","blue"),lty=1)
+axis(2, at=c(10,20,30),labels=c("10","20","30"))
+axis(1, at=c(1,235900,471900), labels=c("Thu","Fri","Sat"))
+
+#save the picture to disk with requested resolution and file type
+png(file="./data2/plot3.png",
+    width=480, height=480)
+plot(days,s1,type="l",xaxt="none",xlab="",
+     yaxt="none",ylab="Energy Sub Metering",
+     col="black",ylim=c(0,40),lwd=2)
+lines(days,s2, col = "red")
+lines(days,s3, col = "blue")
+legend("topright", legend=c("Sub Metering 1","Sub Metering 2","Sub Metering 3"),
+       col=c("black","red","blue"),lty=1)
+axis(2, at=c(10,20,30),labels=c("10","20","30"))
+axis(1, at=c(1,235900,471900), labels=c("Thu","Fri","Sat"))
+dev.off()
+#####################################################
+# End Part IV
+#####################################################
+
+#####################################################
+# Part V: Final Plot
+#####################################################
+
+#####################################################
+# End Part V, End Project
 #####################################################
