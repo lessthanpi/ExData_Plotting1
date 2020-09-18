@@ -178,6 +178,7 @@ plot(days,s1,type="l",xaxt="none",xlab="",
      col="black",ylim=c(0,40),lwd=2)
 lines(days,s2, col = "red")
 lines(days,s3, col = "blue")
+#this changes from before had to dig in ?legend for a LONG time.  cex is the part that fixes box size
 legend("topright", legend=c("Sub Metering 1","Sub Metering 2","Sub Metering 3"),
        col=c("black","red","blue"),lty=1,pt.cex=1,cex=0.4,box.lty=1)
 axis(2, at=c(10,20,30),labels=c("10","20","30"))
