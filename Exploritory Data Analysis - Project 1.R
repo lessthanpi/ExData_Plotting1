@@ -108,10 +108,6 @@ dev.off()
 #####################################################
 # End of Part III
 #####################################################
-
-#####################################################
-# Part IV:  Plot 3
-#####################################################
 s1<-table_dates$Sub_metering_1
 s2<-table_dates$Sub_metering_2
 s3<-table_dates$Sub_metering_3
@@ -139,6 +135,7 @@ legend("topright", legend=c("Sub Metering 1","Sub Metering 2","Sub Metering 3"),
 axis(2, at=c(10,20,30),labels=c("10","20","30"))
 axis(1, at=c(1,235900,471900), labels=c("Thu","Fri","Sat"))
 dev.off()
+
 #####################################################
 # End Part IV
 #####################################################
@@ -147,6 +144,49 @@ dev.off()
 # Part V: Final Plot
 #####################################################
 
+
+#need 2 more line graphs
+voltage <- table_dates$Voltage
+reactive_power <- table_dates$Global_reactive_power
+
+#Voltage Graph
+plot(days,voltage,type="l",xlab = "Datetime",
+     xaxt="none", ylab="Voltage")
+axis(1, at=c(1,235900,471900), labels=c("Thu","Fri","Sat"))
+
+#Reactive Power Graph
+plot(days,reactive_power,type="l",xlab="Datetime", xaxt="none",
+     ylab="Global_reactive_power")
+axis(1, at=c(1,235900,471900), labels=c("Thu","Fri","Sat"))
+
+
+## Save it to disk
+png(file="./data2/plot4.png",
+    width=480, height=480)
+#this builds the 2x2 graph panels
+par(mfrow=c(2,2))
+#top left: Global Active Power
+hist(hist_data,col="red",main="Global Active Power",
+     xlab = "Global Active Power (Kilowatts)",ylim=y_ticks)
+#top right: Voltage
+plot(days,voltage,type="l",xlab = "Datetime",
+     xaxt="none", ylab="Voltage")
+axis(1, at=c(1,235900,471900), labels=c("Thu","Fri","Sat"))
+#lower left:  Submeters
+plot(days,s1,type="l",xaxt="none",xlab="",
+     yaxt="none",ylab="Energy Sub Metering",
+     col="black",ylim=c(0,40),lwd=2)
+lines(days,s2, col = "red")
+lines(days,s3, col = "blue")
+legend("topright", legend=c("Sub Metering 1","Sub Metering 2","Sub Metering 3"),
+       col=c("black","red","blue"),lty=1,pt.cex=1,cex=0.4,box.lty=1)
+axis(2, at=c(10,20,30),labels=c("10","20","30"))
+axis(1, at=c(1,235900,471900), labels=c("Thu","Fri","Sat"))
+#lower right:  Reactive Power
+plot(days,reactive_power,type="l",xlab="Datetime", xaxt="none",
+     ylab="Global_reactive_power")
+axis(1, at=c(1,235900,471900), labels=c("Thu","Fri","Sat"))
+dev.off()
 #####################################################
 # End Part V, End Project
 #####################################################
